@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetal Health Prediction</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Fetal Health Prediction</h1>
+    <form action="/predict" method="POST">
+        <label for="baseline_value">Baseline Value:</label>
+        <input type="text" id="baseline_value" name="baseline_value" required><br>
+
+        <label for="accelerations">Accelerations:</label>
+        <input type="text" id="accelerations" name="accelerations" required><br>
+
+        <label for="fetal_movement">Fetal Movement:</label>
+        <input type="text" id="fetal_movement" name="fetal_movement" required><br>
+
+        <label for="uterine_contractions">Uterine Contractions:</label>
+        <input type="text" id="uterine_contractions" name="uterine_contractions" required><br>
+
+        <label for="light_decelerations">Light Decelerations:</label>
+        <input type="text" id="light_decelerations" name="light_decelerations" required><br>
+
+        <label for="severe_decelerations">Severe Decelerations:</label>
+        <input type="text" id="severe_decelerations" name="severe_decelerations" required><br>
+
+        <label for="prolongued_decelerations">Prolonged Decelerations:</label>
+        <input type="text" id="prolongued_decelerations" name="prolongued_decelerations" required><br>
+
+        <label for="abnormal_short_term_variability">Abnormal Short Term Variability:</label>
+        <input type="text" id="abnormal_short_term_variability" name="abnormal_short_term_variability" required><br>
+
+        <label for="mean_value_of_short_term_variability">Mean Value of Short Term Variability:</label>
+        <input type="text" id="mean_value_of_short_term_variability" name="mean_value_of_short_term_variability" required><br>
+
+        <label for="percentage_of_time_with_abnormal_long_term_variability">Percentage of Time with Abnormal Long Term Variability:</label>
+        <input type="text" id="percentage_of_time_with_abnormal_long_term_variability" name="percentage_of_time_with_abnormal_long_term_variability" required><br>
+
+        <label for="mean_value_of_long_term_variability">Mean Value of Long Term Variability:</label>
+        <input type="text" id="mean_value_of_long_term_variability" name="mean_value_of_long_term_variability" required><br>
+
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
