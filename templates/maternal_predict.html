@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maternal Health Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Maternal Health Prediction</h1>
+        <p>Enter the following details to predict maternal health status.</p>
+
+        <form action="{{ url_for('maternal_predict') }}" method="POST">
+            <div class="input-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" placeholder="Enter age" required>
+            </div>
+
+            <div class="input-group">
+                <label for="systolicbp">Systolic Blood Pressure:</label>
+                <input type="number" id="systolicbp" name="systolicbp" placeholder="e.g., 120" required>
+            </div>
+
+            <div class="input-group">
+                <label for="diastolicbp">Diastolic Blood Pressure:</label>
+                <input type="number" id="diastolicbp" name="diastolicbp" placeholder="e.g., 80" required>
+            </div>
+
+            <div class="input-group">
+                <label for="bs">Blood Sugar Level:</label>
+                <input type="number" id="bs" name="bs" step="0.1" placeholder="e.g., 5.6" required>
+            </div>
+
+            <div class="input-group">
+                <label for="bodytemp">Body Temperature (°C):</label>
+                <input type="number" id="bodytemp" name="bodytemp" step="0.1" placeholder="e.g., 37.0" required>
+            </div>
+
+            <div class="input-group">
+                <label for="heartrate">Heart Rate (BPM):</label>
+                <input type="number" id="heartrate" name="heartrate" placeholder="e.g., 75" required>
+            </div>
+
+            <button type="submit" class="btn">Predict Maternal Health</button>
+        </form>
+
+        {% if result %}
+        <div class="result-box">
+            <h3>Prediction Result: <span class="highlight">{{ result }}</span></h3>
+            <img src="{{ graph_url }}" alt="Prediction Graph">
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <p class="error">Error: {{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

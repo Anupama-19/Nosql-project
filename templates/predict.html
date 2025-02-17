@@ -3,46 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fetal Health Prediction</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <title>Fetal Health Prediction - Enter Data</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f7fc;
+        }
+        .form-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #48c9b0;
+            border-color: #16a085;
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1rem;
+        }
+        .btn-back {
+            background-color: #f39c12;
+            color: white;
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1rem;
+            text-align: center;
+            display: block;
+            text-decoration: none;
+        }
+        .form-control {
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            padding: 15px;
+        }
+        .form-control:focus {
+            border-color: #1abc9c;
+            box-shadow: 0 0 10px rgba(26, 188, 156, 0.2);
+        }
+    </style>
 </head>
 <body>
-    <h1>Fetal Health Prediction</h1>
-    <form action="/predict" method="POST">
-        <label for="baseline_value">Baseline Value:</label>
-        <input type="text" id="baseline_value" name="baseline_value" required><br>
-
-        <label for="accelerations">Accelerations:</label>
-        <input type="text" id="accelerations" name="accelerations" required><br>
-
-        <label for="fetal_movement">Fetal Movement:</label>
-        <input type="text" id="fetal_movement" name="fetal_movement" required><br>
-
-        <label for="uterine_contractions">Uterine Contractions:</label>
-        <input type="text" id="uterine_contractions" name="uterine_contractions" required><br>
-
-        <label for="light_decelerations">Light Decelerations:</label>
-        <input type="text" id="light_decelerations" name="light_decelerations" required><br>
-
-        <label for="severe_decelerations">Severe Decelerations:</label>
-        <input type="text" id="severe_decelerations" name="severe_decelerations" required><br>
-
-        <label for="prolongued_decelerations">Prolonged Decelerations:</label>
-        <input type="text" id="prolongued_decelerations" name="prolongued_decelerations" required><br>
-
-        <label for="abnormal_short_term_variability">Abnormal Short Term Variability:</label>
-        <input type="text" id="abnormal_short_term_variability" name="abnormal_short_term_variability" required><br>
-
-        <label for="mean_value_of_short_term_variability">Mean Value of Short Term Variability:</label>
-        <input type="text" id="mean_value_of_short_term_variability" name="mean_value_of_short_term_variability" required><br>
-
-        <label for="percentage_of_time_with_abnormal_long_term_variability">Percentage of Time with Abnormal Long Term Variability:</label>
-        <input type="text" id="percentage_of_time_with_abnormal_long_term_variability" name="percentage_of_time_with_abnormal_long_term_variability" required><br>
-
-        <label for="mean_value_of_long_term_variability">Mean Value of Long Term Variability:</label>
-        <input type="text" id="mean_value_of_long_term_variability" name="mean_value_of_long_term_variability" required><br>
-
-        <button type="submit">Predict</button>
-    </form>
+    <div class="container">
+        <div class="form-container">
+            <h2>Enter the Details</h2>
+            <form action="{{ url_for('predict') }}" method="POST">
+                <input type="hidden" name="form_type" value="fetal_health">
+                
+                <!-- Input fields -->
+                <div class="form-group">
+                    <label for="baseline_value">Baseline Value</label>
+                    <input type="number" class="form-control" id="baseline_value" name="baseline_value" step="any" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="accelerations">Accelerations</label>
+                    <input type="number" class="form-control" id="accelerations" name="accelerations" step="any" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="fetal_movement">Fetal Movement</label>
+                    <input type="number" class="form-control" id="fetal_movement" name="fetal_movement" step="any" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="uterine_contractions">Uterine Contractions</label>
+                    <input type="number" class="form-control" id="uterine_contractions" name="uterine_contractions" step="any" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="light_decelerations">Light Decelerations</label>
+                    <input type="number" class="form-control" id="light_decelerations" name="light_decelerations" step="any" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="severe_decelerations">Severe Decelerations</label>
+                    <input type="number" class="form-control" id="severe_decelerations" name="severe_decelerations" step="any" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="prolongued_decelerations">Prolongued Decelerations</label>
+                    <input type="number" class="form-control" id="prolongued_decelerations" name="prolongued_decelerations" step="any" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="abnormal_short_term_variability">Abnormal Short-Term Variability</label>
+                    <input type="number" class="form-control" id="abnormal_short_term_variability" name="abnormal_short_term_variability" step="any" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="mean_value_of_short_term_variability">Mean Value of Short-Term Variability</label>
+                    <input type="number" class="form-control" id="mean_value_of_short_term_variability" name="mean_value_of_short_term_variability" step="any" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="percentage_of_time_with_abnormal_long_term_variability">Percentage of Time with Abnormal Long-Term Variability</label>
+                    <input type="number" class="form-control" id="percentage_of_time_with_abnormal_long_term_variability" name="percentage_of_time_with_abnormal_long_term_variability" step="any" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="mean_value_of_long_term_variability">Mean Value of Long-Term Variability</label>
+                    <input type="number" class="form-control" id="mean_value_of_long_term_variability" name="mean_value_of_long_term_variability" step="any" min="0">
+                </div>
+                <button type="submit" class="btn btn-primary">Predict Health Status</button>
+                <a href="{{ url_for('index') }}" class="btn btn-back mt-3">Go Back</a>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

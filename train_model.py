@@ -4,25 +4,53 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import joblib
 
-# Load the dataset
-df = pd.read_csv("f_health.csv")
+# -------------------- Fetal Health Model --------------------
 
-# Separate features and target variable
-X = df.drop(columns=["fetal_health"])  # Drop the target column
-y = df["fetal_health"]
+# Load the fetal health dataset
+df_fetal = pd.read_csv("f_health.csv")
 
-# Split the dataset into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# Separate features and target variable for fetal health
+X_fetal = df_fetal.drop(columns=["fetal_health"])  # Drop the target column
+y_fetal = df_fetal["fetal_health"]  # Target column for fetal health
 
-# Train the model
-model = RandomForestClassifier(random_state=42)
-model.fit(X_train, y_train)
+# Split the dataset into training and testing sets for fetal health
+X_train_fetal, X_test_fetal, y_train_fetal, y_test_fetal = train_test_split(X_fetal, y_fetal, test_size=0.2, random_state=42)
 
-# Test the model
-y_pred = model.predict(X_test)
-accuracy = accuracy_score(y_test, y_pred)
-print(f"Model Accuracy: {accuracy:.2f}")
+# Train the fetal health model
+model_fetal = RandomForestClassifier(random_state=42)
+model_fetal.fit(X_train_fetal, y_train_fetal)
 
-# Save the trained model
-joblib.dump(model, "fetal_health_model.pkl")
-print("Model saved as 'fetal_health_model.pkl'")
+# Test the fetal health model
+y_pred_fetal = model_fetal.predict(X_test_fetal)
+accuracy_fetal = accuracy_score(y_test_fetal, y_pred_fetal)
+print(f"Fetal Health Model Accuracy: {accuracy_fetal:.2f}")
+
+# Save the fetal health model
+joblib.dump(model_fetal, "fetal_health_model.pkl")
+print("Fetal Health Model saved as 'fetal_health_model.pkl'")
+
+
+# -------------------- Maternal Health Model --------------------
+
+# Load the maternal health dataset
+df_maternal = pd.read_csv("maternal_health.csv")
+
+# Separate features and target variable for maternal health
+X_maternal = df_maternal.drop(columns=["RiskLevel"])  # Drop the 'RiskLevel' column (target column)
+y_maternal = df_maternal["RiskLevel"]  # Target column for maternal health
+
+# Split the dataset into training and testing sets for maternal health
+X_train_maternal, X_test_maternal, y_train_maternal, y_test_maternal = train_test_split(X_maternal, y_maternal, test_size=0.2, random_state=42)
+
+# Train the maternal health model
+model_maternal = RandomForestClassifier(random_state=42)
+model_maternal.fit(X_train_maternal, y_train_maternal)
+
+# Test the maternal health model
+y_pred_maternal = model_maternal.predict(X_test_maternal)
+accuracy_maternal = accuracy_score(y_test_maternal, y_pred_maternal)
+print(f"Maternal Health Model Accuracy: {accuracy_maternal:.2f}")
+
+# Save the maternal health model
+joblib.dump(model_maternal, "maternal_health_model.pkl")
+print("Maternal Health Model saved as 'maternal_health_model.pkl'")

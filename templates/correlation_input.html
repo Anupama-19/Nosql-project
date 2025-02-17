@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correlation Analysis</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Enter Data for Correlation Analysis</h1>
+        
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+
+        <form action="{{ url_for('correlation_input') }}" method="post">
+            <div class="form-group">
+                <label>Age:</label>
+                <input type="number" step="0.1" class="form-control" name="age" required>
+            </div>
+
+            <div class="form-group">
+                <label>Systolic BP:</label>
+                <input type="number" step="0.1" class="form-control" name="systolicbp" required>
+            </div>
+
+            <div class="form-group">
+                <label>Diastolic BP:</label>
+                <input type="number" step="0.1" class="form-control" name="diastolicbp" required>
+            </div>
+
+            <div class="form-group">
+                <label>Blood Sugar:</label>
+                <input type="number" step="0.1" class="form-control" name="bs" required>
+            </div>
+
+            <div class="form-group">
+                <label>Body Temperature:</label>
+                <input type="number" step="0.1" class="form-control" name="bodytemp" required>
+            </div>
+
+            <div class="form-group">
+                <label>Heart Rate:</label>
+                <input type="number" step="0.1" class="form-control" name="heartrate" required>
+            </div>
+
+            <div class="form-group">
+                <label>Baseline Fetal HR:</label>
+                <input type="number" step="0.1" class="form-control" name="baseline_fhr" required>
+            </div>
+
+            <div class="form-group">
+                <label>Accelerations:</label>
+                <input type="number" step="0.1" class="form-control" name="accelerations" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Generate Correlation Graph</button>
+        </form>
+    </div>
+</body>
+</html>

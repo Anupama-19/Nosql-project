@@ -1,0 +1,19 @@
+<!-- maternal_result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maternal Health Prediction Result</title>
+</head>
+<body>
+    <h1>Maternal Health Prediction Result</h1>
+    
+    <h3>Prediction Result: {{ result }}</h3>
+    <img src="{{ graph_url }}" alt="Maternal Health Prediction Graph">
+    
+    <br><br>
+    <a href="{{ url_for('dashboard') }}"><button>Back to Dashboard</button></a>
+
+</body>
+</html>
